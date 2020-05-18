@@ -241,16 +241,16 @@ lockClear(bool failOnNoLock)
 
 /**********************************************************************************************************************************/
 bool
-lockCheckExists(const String *lockPath, const String *stanza, LockType lockType)
+lockCheckExists(String *lockFile)
 {
     FUNCTION_LOG_BEGIN(logLevelDebug);
-        FUNCTION_LOG_PARAM(BOOL, failOnNoLock);
+        FUNCTION_LOG_PARAM(String, lockFile);
     FUNCTION_LOG_END();
 
     bool result = false;
 
-    // Check if backup lock file exists
-    if (lockTypeHeld != lockTypeNone)
+    // Check if lock file exists
+    if ( access( lockFile, F_OK ) != -1 )
     {
         result = true;
     }

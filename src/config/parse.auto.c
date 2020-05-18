@@ -24,6 +24,21 @@ static const struct option optionList[] =
         .val = PARSE_OPTION_FLAG | PARSE_RESET_FLAG | cfgOptArchiveAsync,
     },
 
+    // archive-backup-only option
+    // -----------------------------------------------------------------------------------------------------------------------------
+    {
+        .name = CFGOPT_ARCHIVE_BACKUP_ONLY,
+        .val = PARSE_OPTION_FLAG | cfgOptArchiveBackupOnly,
+    },
+    {
+        .name = "no-" CFGOPT_ARCHIVE_BACKUP_ONLY,
+        .val = PARSE_OPTION_FLAG | PARSE_NEGATE_FLAG | cfgOptArchiveBackupOnly,
+    },
+    {
+        .name = "reset-" CFGOPT_ARCHIVE_BACKUP_ONLY,
+        .val = PARSE_OPTION_FLAG | PARSE_RESET_FLAG | cfgOptArchiveBackupOnly,
+    },
+
     // archive-check option
     // -----------------------------------------------------------------------------------------------------------------------------
     {
@@ -2459,6 +2474,7 @@ static const ConfigOption optionResolveOrder[] =
 {
     cfgOptStanza,
     cfgOptArchiveAsync,
+    cfgOptArchiveBackupOnly,
     cfgOptArchiveGetQueueMax,
     cfgOptArchivePushQueueMax,
     cfgOptArchiveTimeout,

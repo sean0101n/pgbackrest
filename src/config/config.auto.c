@@ -284,6 +284,7 @@ static ConfigCommandData configCommandData[CFG_COMMAND_TOTAL] = CONFIG_COMMAND_L
 Option constants
 ***********************************************************************************************************************************/
 STRING_EXTERN(CFGOPT_ARCHIVE_ASYNC_STR,                             CFGOPT_ARCHIVE_ASYNC);
+STRING_EXTERN(CFGOPT_ARCHIVE_BACKUP_ONLY_STR,                       CFGOPT_ARCHIVE_BACKUP_ONLY);
 STRING_EXTERN(CFGOPT_ARCHIVE_CHECK_STR,                             CFGOPT_ARCHIVE_CHECK);
 STRING_EXTERN(CFGOPT_ARCHIVE_COPY_STR,                              CFGOPT_ARCHIVE_COPY);
 STRING_EXTERN(CFGOPT_ARCHIVE_GET_QUEUE_MAX_STR,                     CFGOPT_ARCHIVE_GET_QUEUE_MAX);
@@ -479,6 +480,14 @@ static ConfigOptionData configOptionData[CFG_OPTION_TOTAL] = CONFIG_OPTION_LIST
         CONFIG_OPTION_NAME(CFGOPT_ARCHIVE_ASYNC)
         CONFIG_OPTION_INDEX(0)
         CONFIG_OPTION_DEFINE_ID(cfgDefOptArchiveAsync)
+    )
+
+    //------------------------------------------------------------------------------------------------------------------------------
+    CONFIG_OPTION
+    (
+        CONFIG_OPTION_NAME(CFGOPT_ARCHIVE_BACKUP_ONLY)
+        CONFIG_OPTION_INDEX(0)
+        CONFIG_OPTION_DEFINE_ID(cfgDefOptArchiveBackupOnly)
     )
 
     //------------------------------------------------------------------------------------------------------------------------------

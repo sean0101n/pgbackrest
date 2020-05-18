@@ -55,6 +55,8 @@ Option constants
 ***********************************************************************************************************************************/
 #define CFGOPT_ARCHIVE_ASYNC                                        "archive-async"
     STRING_DECLARE(CFGOPT_ARCHIVE_ASYNC_STR);
+#define CFGOPT_ARCHIVE_BACKUP_ONLY                                  "archive-backup-only"
+    STRING_DECLARE(CFGOPT_ARCHIVE_BACKUP_ONLY_STR);
 #define CFGOPT_ARCHIVE_CHECK                                        "archive-check"
     STRING_DECLARE(CFGOPT_ARCHIVE_CHECK_STR);
 #define CFGOPT_ARCHIVE_COPY                                         "archive-copy"
@@ -422,7 +424,7 @@ Option constants
 #define CFGOPT_TYPE                                                 "type"
     STRING_DECLARE(CFGOPT_TYPE_STR);
 
-#define CFG_OPTION_TOTAL                                            184
+#define CFG_OPTION_TOTAL                                            185
 
 /***********************************************************************************************************************************
 Command enum
@@ -457,6 +459,7 @@ Option enum
 typedef enum
 {
     cfgOptArchiveAsync,
+    cfgOptArchiveBackupOnly,
     cfgOptArchiveCheck,
     cfgOptArchiveCopy,
     cfgOptArchiveGetQueueMax,

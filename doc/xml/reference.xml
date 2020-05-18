@@ -1091,13 +1091,15 @@
 
                 <text>The WAL segment may be pushed immediately to the archive or stored locally depending on the value of <setting>archive-async</setting></text>
 
-		<option id="archive-backup-only" name="Archive Backup Only">
-		    <summary>Archive WAL files only during backups.</summary>
+		<option-list>
+		    <option id="archive-backup-only" name="Archive Backup Only">
+		        <summary>Archive WAL files only during backups.</summary>
 
-		    <text>This option only enables WAL archiving to occur during a backup.  PITR will not be possible if this setting is turned on.</text>
+		        <text>This option only enables WAL archiving to occur during a backup.  PITR will not be possible if this setting is turned on.</text>
 
-		    <example>y</example>
-		</option>
+		        <example>y</example>
+		    </option>
+		</option-list>
 
                 <command-example-list>
                     <command-example>

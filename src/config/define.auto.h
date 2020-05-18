@@ -53,6 +53,7 @@ Option define enum
 typedef enum
 {
     cfgDefOptArchiveAsync,
+    cfgDefOptArchiveBackupOnly,
     cfgDefOptArchiveCheck,
     cfgDefOptArchiveCopy,
     cfgDefOptArchiveGetQueueMax,

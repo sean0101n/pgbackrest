@@ -3,6 +3,7 @@ Archive Push Command
 ***********************************************************************************************************************************/
 #include "build.auto.h"
 
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -13,6 +14,7 @@ Archive Push Command
 #include "command/control/common.h"
 #include "common/compress/helper.h"
 #include "common/debug.h"
+#include "common/lock.h"
 #include "common/log.h"
 #include "common/memContext.h"
 #include "common/wait.h"
@@ -271,6 +273,18 @@ cmdArchivePush(void)
 
         // Test for stop file
         lockStopTest();
+
+	// Check if optional archiving is enabled, if so then exit
+        const String *lockPath = cfgOptionStr(cfgOptLockPath);
+	if (cfgOptionBool(cfgOptArchiveBackupOnly))
+	{
+	    // Check for backup lock file
+	    if (lockCheckExists(lockPath))
+	    {
+	       THROW(ParamRequiredError, "Just a test"); 
+	    }
+
+	}
 
         // Get the segment name
         String *walFile = walPath(strLstGet(commandParam, 0), cfgOptionStrNull(cfgOptPgPath), STR(cfgCommandName(cfgCommand())));
