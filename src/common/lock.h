@@ -35,7 +35,7 @@ bool lockAcquire(const String *lockPath, const String *stanza, LockType lockType
 bool lockClear(bool failOnNoLock);
 
 //Check if a lock of a specific type exists.  Only operation to use this currently is archive-push.
-bool lockCheckExists(const String *lockPath);
+bool lockCheckExists(const String *lockFile);
 
 // Release a lock
 bool lockRelease(bool failOnNoLock);

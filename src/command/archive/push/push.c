@@ -275,11 +275,10 @@ cmdArchivePush(void)
         lockStopTest();
 
 	// Check if optional archiving is enabled, if so then exit
-        const String *lockPath = cfgOptionStr(cfgOptLockPath);
 	if (cfgOptionBool(cfgOptArchiveBackupOnly))
 	{
 	    // Check for backup lock file
-	    if (lockCheckExists(lockPath))
+	    if (lockCheckExists(strNewFmt("%s/%s-backup",strPtr(cfgOptionStr(cfgOptLockPath)),strPtr(cfgOptionStr(cfgOptStanza)))))
 	    {
 	       THROW(ParamRequiredError, "Just a test"); 
 	    }

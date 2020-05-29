@@ -241,19 +241,37 @@ lockClear(bool failOnNoLock)
 
 /**********************************************************************************************************************************/
 bool
-lockCheckExists(String *lockFile)
+lockCheckExists(const String *lockFile)
 {
     FUNCTION_LOG_BEGIN(logLevelDebug);
-        FUNCTION_LOG_PARAM(String, lockFile);
+        FUNCTION_LOG_PARAM(STRING, lockFile);
     FUNCTION_LOG_END();
 
+    int resultno = 0;
+    int errNo;
     bool result = false;
 
-    // Check if lock file exists
-    if ( access( lockFile, F_OK ) != -1 )
+    MEM_CONTEXT_TEMP_BEGIN()
     {
-        result = true;
+        // Check if lock file exists
+        if ((resultno = open(strPtr(lockFile), O_WRONLY | O_CREAT, STORAGE_MODE_FILE_DEFAULT)) == -1)
+	{
+	    errNo = errno;
+	    if (errNo == ENOENT)
+            {
+	        result = false;
+	    }
+	    else
+	    {
+	        result = true;
+	    }
+	}
+	else
+	{
+	    result = false;
+	}
     }
+    MEM_CONTEXT_TEMP_END();
 
     FUNCTION_LOG_RETURN(BOOL, result);
 
